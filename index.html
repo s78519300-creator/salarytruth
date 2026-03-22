@@ -1748,7 +1748,7 @@ function showAnalysisModal(entry){
 
   /* VIRAL TEXT */
   const tier=percentile>=90?'top 10%':percentile>=75?'top 25%':percentile>=50?'top 50%':'building up';
-  const vt=`I just found out I am in the ${tier} of salary earners for my role in India.\n\nChecked on SalaryTruth — India's 100% anonymous salary database with ${SALARIES.length}+ real entries.\n\nNo sign-up. No payment. Share your CTC and see exactly where you stand.\n\n salarytruth.in\n\n#SalaryTruth #India #Careers #Salary`;
+  const vt=`I just found out I am in the ${tier} of salary earners for my role in India.\n\nChecked on SalaryTruth — India's 100% anonymous salary database with ${SALARIES.length}+ real entries.\n\nNo sign-up. No payment. Share your CTC and see exactly where you stand.\n\n https://salarytruth-six.vercel.app/\n\n#SalaryTruth #India #Careers #Salary`;
   document.getElementById('viral-text').textContent=vt;
   window._vt=vt;window._myEntry=entry;window._percentile=percentile;window._mktAvg=mktAvg;
 
@@ -1761,7 +1761,7 @@ function showAnalysisModal(entry){
 
 function shareViral(platform){
   const text=window._vt||'Check SalaryTruth India!';
-  const url='https://salarytruth.in';
+  const url='https://salarytruth-six.vercel.app/';
   if(platform==='whatsapp')window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
   else if(platform==='linkedin')window.open('https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(url)+'&summary='+encodeURIComponent(text),'_blank');
   else if(platform==='twitter')window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text),'_blank');
@@ -1782,7 +1782,7 @@ function drawBadge(cid,entry,pct,tier){
   ctx.fillStyle='#7a7a8c';ctx.font='12px DM Sans,sans-serif';ctx.fillText(entry.role+' @ '+entry.co,c.width/2,120);
   if(isVerified){ctx.fillStyle='rgba(0,217,126,0.85)';ctx.font='bold 10px DM Sans,sans-serif';ctx.fillText('✓ Verified Submission',c.width/2,138)}
   ctx.fillStyle='rgba(255,107,43,0.5)';ctx.fillRect(c.width/2-44,isVerified?148:142,88,1);
-  ctx.fillStyle='#7a7a8c';ctx.font='10px DM Sans,sans-serif';ctx.fillText('salarytruth.in',c.width/2,isVerified?161:155);
+  ctx.fillStyle='#7a7a8c';ctx.font='10px DM Sans,sans-serif';ctx.fillText('salarytruth-six.vercel.app',c.width/2,isVerified?161:155);
 }
 function downloadBadge(){
   const c=document.getElementById('badgeCanvas'),a=document.createElement('a');
@@ -1916,7 +1916,7 @@ function renderShareCard(){
   ctx.fillStyle='#ff6b2b';
   ctx.font='bold 11px DM Sans,Arial,sans-serif';
   ctx.textAlign='center';
-  ctx.fillText('Check your salary rank → salarytruth.in',(22+W-110)/2,H-21);
+  ctx.fillText('Check your rank → salarytruth-six.vercel.app',(22+W-110)/2,H-21);
 
   /* ── QR PLACEHOLDER ── */
   ctx.fillStyle='#1a1a26';
@@ -1928,12 +1928,12 @@ function renderShareCard(){
   ctx.font='9px DM Sans,Arial,sans-serif';
   ctx.textAlign='center';
   ctx.fillText('Scan QR',W-56,H-32);
-  ctx.fillText('salarytruth.in',W-56,H-20);
+  ctx.fillText('salarytruth-six.vercel.app',W-56,H-20);
 
   /* ── SET CAPTION ── */
   const caption=isAbove
-    ?'Just found out I earn more than '+pct+'% of professionals in my role!\n\nI earn ₹'+diffAbs+'L MORE than the market average 😎\n\nChecked on SalaryTruth — India\'s 100% anonymous salary database.\n\nFind out where you stand: salarytruth.in\n\n#SalaryTruth #India #Careers'
-    :'I just found out I\'m underpaid by ₹'+diffAbs+'L 😳\n\nOnly in the '+pct+'th percentile for my role.\n\nChecked on SalaryTruth — now I know exactly what to do about it.\n\nCheck yours: salarytruth.in\n\n#SalaryTruth #India #Salary';
+    ?'Just found out I earn more than '+pct+'% of professionals in my role!\n\nI earn ₹'+diffAbs+'L MORE than the market average 😎\n\nChecked on SalaryTruth — India\'s 100% anonymous salary database.\n\nFind out where you stand: https://salarytruth-six.vercel.app/\n\n#SalaryTruth #India #Careers'
+    :'I just found out I\'m underpaid by ₹'+diffAbs+'L 😳\n\nOnly in the '+pct+'th percentile for my role.\n\nChecked on SalaryTruth — now I know exactly what to do about it.\n\nCheck yours: https://salarytruth-six.vercel.app/\n\n#SalaryTruth #India #Salary';
   window._shareCaption=caption;
   const captionEl=document.getElementById('card-caption-text');
   if(captionEl)captionEl.textContent=caption;
@@ -1949,18 +1949,18 @@ function downloadShareCard(){
 }
 
 function copyCaption(){
-  const cap=window._shareCaption||'Check your salary rank at salarytruth.in';
+  const cap=window._shareCaption||'Check your salary rank at https://salarytruth-six.vercel.app/';
   navigator.clipboard.writeText(cap).catch(()=>{});
   showToast('Caption copied! Now paste it on LinkedIn or WhatsApp 📋');
 }
 
 function copyShareLink(){
-  navigator.clipboard.writeText('https://salarytruth.in').catch(()=>{});
+  navigator.clipboard.writeText('https://salarytruth-six.vercel.app/').catch(()=>{});
   showToast('Link copied! 🔗');
 }
 
 function shareCardWhatsApp(){
-  const cap=window._shareCaption||'Check your salary rank at salarytruth.in';
+  const cap=window._shareCaption||'Check your salary rank at https://salarytruth-six.vercel.app/';
   window.open('https://wa.me/?text='+encodeURIComponent(cap),'_blank');
 }
 
@@ -2119,7 +2119,7 @@ function generateHTMLReport(){
       :'<strong>Action needed:</strong> You are losing ₹'+diffAbs+'L every year. That is ₹'+Math.round(diffAbs*100/12)/100+'L per month left on the table. The next pages show exactly how to fix this.'
     }
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 1 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 1 of 8</div>
 </div>
 
 <!-- PAGE 2: MARKET POSITION -->
@@ -2154,7 +2154,7 @@ function generateHTMLReport(){
     Most professionals in your category earn between <strong style="color:#f0eee8">₹${(pcts.p25||entry.ctc*0.8).toFixed(1)}L – ₹${(pcts.p75||entry.ctc*1.2).toFixed(1)}L</strong>. 
     ${isAbove?'You are in the upper half — focus on reaching the 75th percentile range (₹'+(pcts.p75||entry.ctc*1.2).toFixed(1)+'L) as your next milestone.':'Your target should be reaching at least the median (₹'+(pcts.median||mktAvg).toFixed(1)+'L) in your next job switch or appraisal.'}
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 2 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 2 of 8</div>
 </div>
 
 <!-- PAGE 3: TOP PAYING CAREER PATHS -->
@@ -2190,7 +2190,7 @@ function generateHTMLReport(){
   <div class="insight" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#f59e0b">
     <strong style="color:#f0eee8">Professionals with AI, Data, or Cloud skills earn 30–80% higher salaries than average.</strong> Even adding one high-demand skill to your current role can add ₹3–8L to your CTC within 12 months.
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 3 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 3 of 8</div>
 </div>
 
 <!-- PAGE 4: PERSONAL GROWTH ROADMAP -->
@@ -2211,7 +2211,7 @@ function generateHTMLReport(){
   <div class="insight" style="background:rgba(0,217,126,0.06);border:1px solid rgba(0,217,126,0.2);color:#00d97e">
     <strong style="color:#f0eee8">Skill-based hiring is accelerating.</strong> Companies are paying 40–60% premiums for candidates who can demonstrate practical AI, data, or cloud skills — regardless of degree or years of experience.
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 4 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 4 of 8</div>
 </div>
 
 <!-- PAGE 5: SKILLS THAT BOOST SALARY -->
@@ -2247,7 +2247,7 @@ function generateHTMLReport(){
   <div class="insight" style="background:rgba(0,217,126,0.06);border:1px solid rgba(0,217,126,0.2);color:#00d97e;margin-top:16px">
     <strong style="color:#f0eee8">Data and AI skills are the highest-paying in India today.</strong> Adding just 1 high-income skill from the list above can increase your salary by ₹8–18L within 12 months of consistent practice.
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 5 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 5 of 8</div>
 </div>
 
 <!-- PAGE 6: ACTION PLAN -->
@@ -2286,7 +2286,7 @@ function generateHTMLReport(){
     <div style="font-size:12px;font-weight:700;color:#00d97e;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">4. Skill Upgrade</div>
     <div style="font-size:14px;color:#f0eee8">Adding 1–2 high-demand skills (AI, Cloud, or Data Engineering) can increase your CTC by <strong style="color:#00d97e">₹${+(entry.ctc*0.4).toFixed(1)}L – ₹${+(entry.ctc*0.7).toFixed(1)}L</strong> within 12 months. See Page 5 for the exact skills to prioritise.</div>
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 6 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 6 of 8</div>
 </div>
 
 <!-- PAGE 7: SALARY GROWTH PROJECTION -->
@@ -2337,7 +2337,7 @@ function generateHTMLReport(){
   <div class="insight" style="background:rgba(0,217,126,0.06);border:1px solid rgba(0,217,126,0.2);color:#00d97e">
     <strong style="color:#f0eee8">With the right skills and one strategic job switch, your salary can reach ₹${y3}L in 3 years.</strong> Professionals who upskill AND switch companies earn 45–70% more than those who stay put.
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 7 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 7 of 8</div>
 </div>
 
 <!-- PAGE 8: NEGOTIATION STRATEGY -->
@@ -2376,7 +2376,7 @@ function generateHTMLReport(){
   <div class="insight" style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2);color:#ef4444;margin-top:14px">
     <strong style="color:#f0eee8">Most professionals lose ₹2–5L by not negotiating at all.</strong> You now have the market data. Use it in every salary conversation — it completely changes the dynamic.
   </div>
-  <div class="page-footer">SalaryTruth India · salarytruth.in · Page 8 of 8</div>
+  <div class="page-footer">SalaryTruth India · salarytruth-six.vercel.app · Page 8 of 8</div>
 </div>
 
 <!-- FINAL PAGE: POWERFUL CLOSING -->
@@ -2394,7 +2394,7 @@ function generateHTMLReport(){
     <div class="final-cta">Start upgrading today 🚀</div>
     <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,107,43,0.2);font-size:13px;color:#7a7a8c">
       Generated exclusively for ${entry.role} at ${entry.co} · ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}
-      <br/>SalaryTruth India · salarytruth.in · India's most transparent salary database
+      <br/>SalaryTruth India · salarytruth-six.vercel.app · India's most transparent salary database
     </div>
   </div>
 </div>
@@ -3007,7 +3007,7 @@ renderShareCard = function(){
     ctx.fillStyle='#333';ctx.font='500 14px DM Sans,Arial,sans-serif';ctx.fillText(entry.role+' @ '+entry.co,22,H/2+32);
     ctx.fillStyle='#666';ctx.font='12px DM Sans,Arial,sans-serif';ctx.fillText(entry.city+' · '+pct+'th percentile',22,H/2+50);
     ctx.fillStyle=accentColor;ctx.font='bold 13px DM Sans,Arial,sans-serif';ctx.fillText(isAbove?'I earn ₹'+diffAbs+'L MORE than average 😎':'I\'m underpaid by ₹'+diffAbs+'L 😳',22,H/2+72);
-    ctx.fillStyle='#999';ctx.font='11px DM Sans,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('salarytruth.in',W/2,H-14);
+    ctx.fillStyle='#999';ctx.font='11px DM Sans,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('salarytruth-six.vercel.app',W/2,H-14);
 
   } else if(style==='gradient'){
     /* GRADIENT STYLE */
@@ -3027,7 +3027,7 @@ renderShareCard = function(){
     ctx.fillStyle=salaryColor;ctx.font='bold 52px Syne,Arial,sans-serif';ctx.fillText('₹'+entry.ctc+' LPA',22,H/2+10);
     ctx.fillStyle='rgba(240,238,232,0.85)';ctx.font='500 14px DM Sans,Arial,sans-serif';ctx.fillText(entry.role+' @ '+entry.co,22,H/2+32);
     ctx.fillStyle=accentColor;ctx.font='bold 13px DM Sans,Arial,sans-serif';ctx.fillText(isAbove?'I earn ₹'+diffAbs+'L MORE than average 😎':'I\'m underpaid by ₹'+diffAbs+'L 😳',22,H/2+55);
-    ctx.fillStyle='#7a7a8c';ctx.font='11px DM Sans,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('salarytruth.in',W/2,H-14);
+    ctx.fillStyle='#7a7a8c';ctx.font='11px DM Sans,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('salarytruth-six.vercel.app',W/2,H-14);
 
   } else if(style==='minimal'){
     /* MINIMAL STYLE */
@@ -3040,7 +3040,7 @@ renderShareCard = function(){
     ctx.fillStyle='rgba(255,255,255,0.3)';ctx.font='12px DM Sans,Arial,sans-serif';ctx.fillText('LPA',W/2,H/2+30);
     ctx.fillStyle='rgba(255,255,255,0.5)';ctx.font='13px DM Sans,Arial,sans-serif';ctx.fillText(entry.role,W/2,H/2+52);
     ctx.fillStyle='rgba(255,255,255,0.25)';ctx.font='11px DM Sans,Arial,sans-serif';ctx.fillText(pct+'th percentile · '+entry.city,W/2,H/2+70);
-    ctx.fillStyle='rgba(255,107,43,0.5)';ctx.font='11px DM Sans,Arial,sans-serif';ctx.fillText('salarytruth.in',W/2,H-16);
+    ctx.fillStyle='rgba(255,107,43,0.5)';ctx.font='11px DM Sans,Arial,sans-serif';ctx.fillText('salarytruth-six.vercel.app',W/2,H-16);
 
   } else {
     /* DEFAULT DARK — call original */
@@ -3050,8 +3050,8 @@ renderShareCard = function(){
 
   /* Update caption */
   var cap=isAbove
-    ?'Just found out I earn more than '+pct+'% of professionals in my role!\n\nI earn ₹'+diffAbs+'L MORE than the market average 😎\n\nChecked on SalaryTruth — India\'s 100% anonymous salary database.\n\nCheck yours: salarytruth.in\n\n#SalaryTruth #India #Careers'
-    :'I just found out I\'m underpaid by ₹'+diffAbs+'L 😳\n\nOnly in the '+pct+'th percentile for my role.\n\nChecked on SalaryTruth — now I know exactly what to do about it.\n\nCheck yours: salarytruth.in\n\n#SalaryTruth #India #Salary';
+    ?'Just found out I earn more than '+pct+'% of professionals in my role!\n\nI earn ₹'+diffAbs+'L MORE than the market average 😎\n\nChecked on SalaryTruth — India\'s 100% anonymous salary database.\n\nCheck yours: https://salarytruth-six.vercel.app/\n\n#SalaryTruth #India #Careers'
+    :'I just found out I\'m underpaid by ₹'+diffAbs+'L 😳\n\nOnly in the '+pct+'th percentile for my role.\n\nChecked on SalaryTruth — now I know exactly what to do about it.\n\nCheck yours: https://salarytruth-six.vercel.app/\n\n#SalaryTruth #India #Salary';
   window._shareCaption=cap;
   var capEl=document.getElementById('card-caption-text');
   if(capEl)capEl.textContent=cap;
